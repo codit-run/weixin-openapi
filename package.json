@@ -1,8 +1,8 @@
 {
-  "name": "weixin-openapi",
+  "name": "@codit-run/weixin-openapi",
   "description": "Weixin OpenAPI",
   "repository": "codit-run/weixin-openapi",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "xuxucode",
   "license": "MIT",
   "type": "module",
