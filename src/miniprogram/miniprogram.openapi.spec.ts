@@ -10,7 +10,7 @@ import { WeixinMiniProgramOpenAPI } from './miniprogram.openapi.js'
 const client = new WeixinClient({
   appid: 'appid',
   secret: 'secret',
-  store: new WeixinMemoryStore()
+  store: new WeixinMemoryStore(),
 })
 
 const openapi = new WeixinMiniProgramOpenAPI(client)
@@ -42,7 +42,7 @@ describe('#getUnlimitedQRCode', () => {
           controller.enqueue('abc')
           controller.close()
         },
-      }))
+      })),
     )
     const image = await openapi.getUnlimitedQRCode('a=hello')
 
@@ -86,7 +86,7 @@ test('#getDailySummary', async () => {
         ref_date: '20230724',
         visit_total: 391,
         share_pv: 572,
-        share_uv: 383
+        share_uv: 383,
       },
     ],
   })
@@ -98,7 +98,7 @@ test('#getDailySummary', async () => {
         ref_date: '20230724',
         visit_total: 391,
         share_pv: 572,
-        share_uv: 383
+        share_uv: 383,
       },
     ],
   })

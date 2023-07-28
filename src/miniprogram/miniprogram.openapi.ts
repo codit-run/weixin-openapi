@@ -21,19 +21,19 @@ export class WeixinMiniProgramOpenAPI {
    * @throws {WeixinError}
    */
   async getUnlimitedQRCode(scene: string, options?: Partial<{
-    page: string,
-    check_path: boolean,
-    env_version: 'release' | 'trial' | 'develop',
-    width: number,
-    auto_color: boolean,
-    line_color: object,
-    is_hyaline: boolean,
-  }>) {
+    page: string
+    check_path: boolean
+    env_version: 'release' | 'trial' | 'develop'
+    width: number
+    auto_color: boolean
+    line_color: object
+    is_hyaline: boolean
+  }>): Promise<{ type: string; stream: ReadableStream<Uint8Array> }> {
     const res = await this.#client.postRaw('/wxa/getwxacodeunlimit', { scene, ...options })
 
     return {
       type: res.headers.get('content-type') || 'image/jpeg',
-      stream: res.body,
+      stream: res.body!,
     }
   }
 

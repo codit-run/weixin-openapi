@@ -25,7 +25,7 @@ export class WeixinMemoryStore<T extends WeixinToken> implements WeixinTokenStor
       setImmediate(() => {
         this.tokens[key] = {
           data: token,
-          expiresAt: Date.now() + ttl * 1000
+          expiresAt: Date.now() + ttl * 1000,
         }
         resolve()
       })
