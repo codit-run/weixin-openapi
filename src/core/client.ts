@@ -208,7 +208,7 @@ export class WeixinClient {
   /**
    * Gets API quota.
    *
-   * https://developers.weixin.qq.com/doc/offiaccount/openApi/get_api_quota.html
+   * - [OpenAPI](https://developers.weixin.qq.com/doc/offiaccount/openApi/get_api_quota.html)
    *
    * @param path API path starting with '/'.
    *

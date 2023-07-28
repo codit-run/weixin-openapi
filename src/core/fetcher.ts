@@ -62,7 +62,7 @@ export async function request<M extends 'GET' | 'POST'>(
  * }
  * ```
  *
- * https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/mp-access-token/getAccessToken.html
+ * - [OpenAPI](https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/mp-access-token/getAccessToken.html)
  */
 export async function createAccessToken(appid: string, secret: string): Promise<WeixinAccessTokenResponse | WeixinErrorResponse> {
   const res = await request('GET', '/cgi-bin/token', null, {
@@ -97,7 +97,7 @@ export async function createAccessToken(appid: string, secret: string): Promise<
  * }
  * ```
  *
- * https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/mp-access-token/getStableAccessToken.html
+ * - [OpenAPI](https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/mp-access-token/getStableAccessToken.html)
  */
 export async function createStableAccessToken(
   appid: string,
@@ -140,7 +140,7 @@ export async function createStableAccessToken(
  * },
  * ```
  *
- * https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/user-login/code2Session.html
+ * - [OpenAPI](https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/user-login/code2Session.html)
  */
 export async function exchangeCodeForSession(appid: string, secret: string, code: string): Promise<WeixinCodeSessionResponse | WeixinErrorResponse> {
   const res = await request('GET', '/sns/jscode2session', null, {
@@ -179,7 +179,7 @@ export async function exchangeCodeForSession(appid: string, secret: string, code
  * }
  * ```
  *
- * https://developers.weixin.qq.com/doc/oplatform/Website_App/WeChat_Login/Wechat_Login.html
+ * - [OpenAPI](https://developers.weixin.qq.com/doc/oplatform/Website_App/WeChat_Login/Wechat_Login.html)
  */
 export async function exchangeCodeForToken(appid: string, secret: string, code: string) {
   const res = await request('GET', '/sns/oauth2/access_token', null, {

@@ -71,7 +71,7 @@ function createResponse(data: object, raw: boolean): Response {
 
 beforeEach(async () => {
   await store._clear()
-  vi.restoreAllMocks()
+  return () => vi.restoreAllMocks()
 })
 
 describe('#get', () => {

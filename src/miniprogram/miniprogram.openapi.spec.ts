@@ -17,7 +17,7 @@ const openapi = new WeixinMiniProgramOpenAPI(client)
 
 function createResponse(data: ReadableStream | WeixinErrorResponse): Response {
   const isStream = data instanceof ReadableStream
-  const body: any = isStream ? data : Readable.from([JSON.stringify(data)])
+  const body = isStream ? data : Readable.from([JSON.stringify(data)])
   return {
     headers: {
       get(name) {
@@ -30,8 +30,8 @@ function createResponse(data: ReadableStream | WeixinErrorResponse): Response {
 }
 
 beforeEach(() => {
-  vi.restoreAllMocks()
   vi.spyOn(client, 'getAccessToken').mockResolvedValue('test_access_token')
+  return () => vi.restoreAllMocks()
 })
 
 describe('#getUnlimitedQRCode', () => {
@@ -61,6 +61,34 @@ describe('#getUnlimitedQRCode', () => {
     const spy = vi.spyOn(client, 'postRaw').mockRejectedValueOnce(error)
 
     await expect(openapi.getUnlimitedQRCode('a=hello')).rejects.toThrow('Creation failed.')
+    expect(spy).toHaveBeenCalledTimes(1)
+  })
+})
+
+describe('#getUnlimitedQRCodeDataURI', () => {
+  it('returns a success response', async () => {
+    const spy = vi.spyOn(client, 'postRaw').mockResolvedValueOnce(
+      createResponse(new ReadableStream({
+        start(controller) {
+          controller.enqueue('abc')
+          controller.close()
+        },
+      })),
+    )
+    const image = await openapi.getUnlimitedQRCodeDataURI('a=hello')
+
+    expect(image).toMatch(/^data:image\/jpeg;base64,YWJj$/)
+    expect(spy).toHaveBeenCalledTimes(1)
+  })
+
+  it('throws an error', async () => {
+    const error = new WeixinError('Creation failed.', {
+      errcode: 40013,
+      errmsg: 'invalid appid',
+    })
+    const spy = vi.spyOn(client, 'postRaw').mockRejectedValueOnce(error)
+
+    await expect(openapi.getUnlimitedQRCodeDataURI('a=hello')).rejects.toThrow('Creation failed.')
     expect(spy).toHaveBeenCalledTimes(1)
   })
 })

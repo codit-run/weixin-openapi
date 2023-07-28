@@ -1,6 +1,5 @@
 /**
- * Common error codes:
- * https://developers.weixin.qq.com/doc/oplatform/Return_codes/Return_code_descriptions_new.html
+ * - [Common error codes](https://developers.weixin.qq.com/doc/oplatform/Return_codes/Return_code_descriptions_new.html)
  */
 
 import { WeixinErrorResponse } from './types.js'
