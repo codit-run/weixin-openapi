@@ -1,5 +1,4 @@
 import { beforeEach, describe, expect, it, test, vi } from 'vitest'
-import { ReadableStream } from 'node:stream/web'
 import { Readable } from 'node:stream'
 
 import { WeixinClient } from '../core/client.js'
