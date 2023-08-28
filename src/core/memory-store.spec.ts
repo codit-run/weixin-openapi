@@ -27,7 +27,7 @@ test('sets token', async () => {
 })
 
 test('gets nonexistent', async () => {
-  expect(await store.get('nonexistent')).toBeNull()
+  expect(await store.get('nonexistent')).toBeUndefined()
 })
 
 test('gets existing', async () => {
@@ -40,17 +40,17 @@ test('gets expired', async () => {
 
   expect(await store.get(key)).toStrictEqual(token)
   await sleep(1000)
-  expect(await store.get(key)).toBeNull()
+  expect(await store.get(key)).toBeUndefined()
 })
 
 test('deletes nonexistent', async () => {
   expect(await store.delete('nonexistent')).toBeUndefined()
-  expect(await store.get('nonexistent')).toBeNull()
+  expect(await store.get('nonexistent')).toBeUndefined()
 })
 
 test('deletes existing', async () => {
   const { key } = await createEntry()
 
   expect(await store.delete(key)).toBeUndefined()
-  expect(await store.get(key)).toBeNull()
+  expect(await store.get(key)).toBeUndefined()
 })

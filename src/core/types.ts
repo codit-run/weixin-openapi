@@ -41,7 +41,7 @@ export interface WeixinTokenStore<T extends WeixinToken = WeixinToken> {
   /**
    * Gets token.
    */
-  get(key: string): Promise<T | null>
+  get(key: string): Promise<T | undefined>
 
   /**
    * Sets token.

@@ -11,8 +11,8 @@ interface Token<T extends WeixinToken> {
 export class WeixinMemoryStore<T extends WeixinToken> implements WeixinTokenStore<T> {
   tokens: Record<string, Token<T>> = Object.create(null)
 
-  async get(key: string): Promise<T | null> {
-    return new Promise<T | null>((resolve, _) => {
+  async get(key: string): Promise<T | undefined> {
+    return new Promise<T | undefined>((resolve, _) => {
       setImmediate(() => {
         const data = this.#getTokenData(key)
         resolve(data)
@@ -41,14 +41,14 @@ export class WeixinMemoryStore<T extends WeixinToken> implements WeixinTokenStor
     })
   }
 
-  #getTokenData(key: string): T | null {
+  #getTokenData(key: string): T | undefined {
     const token = this.tokens[key]
-    if (!token) return null
+    if (!token) return
 
     if (token.expiresAt <= Date.now()) {
       // Destroy expired token.
       delete this.tokens[key]
-      return null
+      return
     }
 
     return token.data
