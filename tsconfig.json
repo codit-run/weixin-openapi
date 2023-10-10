@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "lib": ["ESNext", "DOM"],
+    "lib": ["ESNext"],
     "module": "NodeNext",
     "baseUrl": "./",
     "declaration": true,
@@ -20,6 +20,3 @@
     "node_modules"
   ]
 }
-
-// FIXME: lib `DOM` added for `fetch` API which type definition lacks in Node.Js.
-// See https://github.com/DefinitelyTyped/DefinitelyTyped/issues/60924

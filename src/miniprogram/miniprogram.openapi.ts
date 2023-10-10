@@ -1,4 +1,5 @@
 import { buffer } from 'node:stream/consumers'
+import type { ReadableStream } from 'node:stream/web'
 
 import { WeixinClient } from '../core/client.js'
 import type { WeixinError } from '../core/error.js'

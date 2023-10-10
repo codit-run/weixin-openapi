@@ -70,7 +70,7 @@ export async function createAccessToken(appid: string, secret: string): Promise<
     secret,
     grant_type: 'client_credential',
   })
-  return await res.json()
+  return await res.json() as WeixinAccessTokenResponse | WeixinErrorResponse
 }
 
 /**
